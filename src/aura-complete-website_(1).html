@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA - Luxury Skincare</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: white;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .font-serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* ========== LUXURY HERO SECTION STYLES ========== */
+        .luxury-hero-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1410 50%, #0a0a0a 100%);
+        }
+
+        /* Ken Burns Background Animation */
+        .background-layer {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: 
+                radial-gradient(ellipse at 30% 40%, rgba(184, 134, 11, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(218, 165, 32, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a0a 0%, #1a1410 50%, #0a0a0a 100%);
+            animation: kenBurnsHero 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes kenBurnsHero {
+            0% {
+                transform: scale(1) translate(0, 0);
+            }
+            100% {
+                transform: scale(1.1) translate(-2%, -2%);
+            }
+        }
+
+        /* Mystical Particles */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(218, 165, 32, 0.6) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float-particle linear infinite;
+        }
+
+        .particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-duration: 15s; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 6px; height: 6px; left: 25%; animation-duration: 18s; animation-delay: 2s; }
+        .particle:nth-child(3) { width: 3px; height: 3px; left: 45%; animation-duration: 20s; animation-delay: 4s; }
+        .particle:nth-child(4) { width: 5px; height: 5px; left: 65%; animation-duration: 16s; animation-delay: 1s; }
+        .particle:nth-child(5) { width: 4px; height: 4px; left: 80%; animation-duration: 19s; animation-delay: 3s; }
+        .particle:nth-child(6) { width: 6px; height: 6px; left: 15%; animation-duration: 17s; animation-delay: 5s; }
+        .particle:nth-child(7) { width: 3px; height: 3px; left: 90%; animation-duration: 21s; animation-delay: 2.5s; }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .luxury-content-wrapper {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .luxury-hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 80px;
+        }
+
+        /* Left Content */
+        .luxury-text-content {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .luxury-brand-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            letter-spacing: 8px;
+            color: #DAA520;
+            margin-bottom: 30px;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+
+        .luxury-hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 300;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+        }
+
+        .luxury-hero-title .highlight {
+            font-weight: 600;
+            background: linear-gradient(135deg, #DAA520 0%, #FFD700 50%, #B8860B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .luxury-hero-description {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.9s forwards;
+        }
+
+        .luxury-cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #B8860B 0%, #DAA520 100%);
+            color: #000;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.2s forwards;
+        }
+
+        .luxury-cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #FFD700 0%, #DAA520 100%);
+            transition: left 0.4s ease;
+        }
+
+        .luxury-cta-button:hover::before {
+            left: 0;
+        }
+
+        .luxury-cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .luxury-cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(218, 165, 32, 0.4);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Product Section */
+        .product-showcase {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Golden Aura Effect */
+        .aura-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(218, 165, 32, 0.3) 0%, rgba(218, 165, 32, 0.1) 40%, transparent 70%);
+            filter: blur(40px);
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.9;
+            }
+        }
+
+        /* Floating Silk Fabric */
+        .silk-fabric {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            opacity: 0.15;
+        }
+
+        .silk-fabric::before,
+        .silk-fabric::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .silk-fabric::before {
+            width: 300px;
+            height: 400px;
+            top: -50px;
+            right: -100px;
+            animation: floatSilk1 8s ease-in-out infinite;
+        }
+
+        .silk-fabric::after {
+            width: 250px;
+            height: 350px;
+            bottom: -50px;
+            left: -80px;
+            animation: floatSilk2 10s ease-in-out infinite;
+        }
+
+        @keyframes floatSilk1 {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            50% {
+                transform: translate(20px, -30px) rotate(5deg);
+            }
+        }
+
+        @keyframes floatSilk2 {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            50% {
+                transform: translate(-20px, 30px) rotate(-5deg);
+            }
+        }
+
+        /* Product Image Container */
+        .product-container {
+            position: relative;
+            z-index: 5;
+            animation: floatProduct 6s ease-in-out infinite;
+            opacity: 0;
+            animation: floatProduct 6s ease-in-out infinite, fadeIn 1.5s ease-out 0.5s forwards;
+        }
+
+        @keyframes floatProduct {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(1deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .product-image {
+            width: 400px;
+            height: auto;
+            filter: drop-shadow(0 20px 60px rgba(218, 165, 32, 0.3));
+            position: relative;
+        }
+
+        /* Reflection Effect */
+        .reflection {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 50px;
+            background: linear-gradient(to bottom, rgba(218, 165, 32, 0.1) 0%, transparent 100%);
+            filter: blur(10px);
+            border-radius: 50%;
+        }
+
+        /* ========== ORIGINAL WEBSITE STYLES ========== */
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem !important;
+                line-height: 1.1 !important;
+            }
+
+            .hero-description {
+                font-size: 1rem !important;
+            }
+
+            .text-5xl, .text-6xl {
+                font-size: 2.5rem !important;
+            }
+
+            .text-4xl {
+                font-size: 2rem !important;
+            }
+
+            .text-3xl {
+                font-size: 1.75rem !important;
+            }
+
+            .text-2xl {
+                font-size: 1.5rem !important;
+            }
+
+            .py-32 {
+                padding-top: 4rem !important;
+                padding-bottom: 4rem !important;
+            }
+
+            .px-6 {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            .p-12 {
+                padding: 2rem !important;
+            }
+
+            .gap-16 {
+                gap: 2rem !important;
+            }
+
+            .mb-20 {
+                margin-bottom: 3rem !important;
+            }
+
+            /* Mobile Cart */
+            .cart-slide {
+                max-width: 100% !important;
+            }
+
+            /* Mobile Modal */
+            .glassmorphism {
+                max-width: 95% !important;
+            }
+
+            /* Better touch targets */
+            button, a {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Grid fixes */
+            .grid {
+                gap: 1.5rem !important;
+            }
+
+            /* Luxury Hero Mobile */
+            .luxury-hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .luxury-text-content {
+                max-width: 600px;
+            }
+
+            .luxury-hero-title {
+                font-size: 3.5rem !important;
+            }
+
+            .product-image {
+                width: 320px !important;
+            }
+
+            .luxury-content-wrapper {
+                padding: 0 30px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+
+            .text-8xl {
+                font-size: 3rem !important;
+            }
+
+            .luxury-hero-title {
+                font-size: 2.8rem !important;
+            }
+
+            .luxury-hero-description {
+                font-size: 1rem !important;
+            }
+
+            .product-image {
+                width: 280px !important;
+            }
+
+            .aura-glow {
+                width: 350px !important;
+                height: 350px !important;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        @keyframes kenBurns {
+            0% { transform: scale(1) translateX(0); }
+            50% { transform: scale(1.1) translateX(-20px); }
+            100% { transform: scale(1) translateX(0); }
+        }
+
+        @keyframes blurIn {
+            from {
+                opacity: 0;
+                filter: blur(10px);
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                filter: blur(0);
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Hero Animations */
+        .hero-subtitle {
+            animation: fadeInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+            opacity: 0;
+        }
+
+        .hero-title {
+            animation: fadeInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards;
+            opacity: 0;
+        }
+
+        .hero-description {
+            animation: fadeInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s forwards;
+            opacity: 0;
+        }
+
+        .hero-cta {
+            animation: fadeInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-scroll {
+            animation: fadeInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s forwards, bounce 2s ease-in-out 2s infinite;
+            opacity: 0;
+        }
+
+        /* Glassmorphism */
+        .glassmorphism {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Magnetic Button Effect */
+        .magnetic-button {
+            position: relative;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .magnetic-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Scroll Animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .scroll-animate.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Cart Slide Animation */
+        .cart-slide {
+            animation: slideInRight 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .blur-in {
+            animation: blurIn 0.3s ease-out forwards;
+        }
+
+        /* Product Grid Hover */
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Loading Animation */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading {
+            animation: spin 1s linear infinite;
+        }
+
+        /* Success Animation */
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .success-icon {
+            animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        /* Shimmer Effect for Product Images */
+        .shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        // State Management
+        const state = {
+            currentPage: 'home',
+            cart: [],
+            isCartOpen: false,
+            selectedProduct: null,
+            checkoutData: {},
+            orderPlaced: false
+        };
+
+        // Product Data
+        const products = [
+            {
+                id: 1,
+                name: 'Radiance Night Cream',
+                price: 189,
+                image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800',
+                category: 'Night Care',
+                rating: 5,
+                description: 'A luxurious night cream infused with 24K gold and rare botanicals to restore and rejuvenate your skin overnight.',
+                benefits: [
+                    'Reduces fine lines and wrinkles',
+                    'Deeply hydrates and nourishes',
+                    'Enhances skin elasticity',
+                    'Promotes cellular regeneration'
+                ]
+            },
+            {
+                id: 2,
+                name: 'Golden Serum',
+                price: 249,
+                image: 'https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=800',
+                category: 'Serums',
+                rating: 5,
+                description: 'Premium anti-aging serum with pure gold particles and hyaluronic acid for instant radiance.',
+                benefits: [
+                    'Instant brightening effect',
+                    'Minimizes pores',
+                    'Boosts collagen production',
+                    'Lightweight, fast-absorbing formula'
+                ]
+            },
+            {
+                id: 3,
+                name: 'Velvet Cleanser',
+                price: 89,
+                image: 'https://images.unsplash.com/photo-1556228852-80a45e41e4e1?w=800',
+                category: 'Cleansers',
+                rating: 4.5,
+                description: 'Gentle yet effective cleansing balm that melts away impurities while nourishing your skin.',
+                benefits: [
+                    'Removes makeup and impurities',
+                    'Balances skin pH',
+                    'Non-stripping formula',
+                    'Suitable for all skin types'
+                ]
+            },
+            {
+                id: 4,
+                name: 'Illuminating Eye Cream',
+                price: 149,
+                image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800',
+                category: 'Eye Care',
+                rating: 5,
+                description: 'Intensive eye treatment that targets dark circles, puffiness, and fine lines.',
+                benefits: [
+                    'Reduces dark circles',
+                    'Diminishes puffiness',
+                    'Smooths fine lines',
+                    'Cooling applicator included'
+                ]
+            },
+            {
+                id: 5,
+                name: 'Rose Mist Toner',
+                price: 79,
+                image: 'https://images.unsplash.com/photo-1571875257727-256c39da42af?w=800',
+                category: 'Toners',
+                rating: 4.5,
+                description: 'Refreshing rose water toner with antioxidants to hydrate and prepare skin.',
+                benefits: [
+                    'Balances and refreshes',
+                    'Prepares skin for treatments',
+                    'Rich in antioxidants',
+                    'All-natural ingredients'
+                ]
+            },
+            {
+                id: 6,
+                name: 'Luxe Day Moisturizer',
+                price: 169,
+                image: 'https://images.unsplash.com/photo-1571875257727-256c39da42af?w=800',
+                category: 'Day Care',
+                rating: 5,
+                description: 'Lightweight day cream with SPF 30 that protects while providing all-day hydration.',
+                benefits: [
+                    'SPF 30 protection',
+                    'All-day hydration',
+                    'Non-greasy formula',
+                    'Perfect makeup base'
+                ]
+            }
+        ];
+
+        // Helper Functions
+        function getCartCount() {
+            return state.cart.reduce((sum, item) => sum + item.quantity, 0);
+        }
+
+        function getCartTotal() {
+            return state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2);
+        }
+
+        function addToCart(product) {
+            const existingItem = state.cart.find(item => item.id === product.id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                state.cart.push({ ...product, quantity: 1 });
+            }
+            
+            state.selectedProduct = null;
+            state.isCartOpen = true;
+            render();
+        }
+
+        function removeFromCart(productId) {
+            state.cart = state.cart.filter(item => item.id !== productId);
+            render();
+        }
+
+        function updateQuantity(productId, change) {
+            const item = state.cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    render();
+                }
+            }
+        }
+
+        function openProductModal(productId) {
+            state.selectedProduct = productId;
+            render();
+        }
+
+        function handleCheckout() {
+            state.currentPage = 'checkout';
+            state.isCartOpen = false;
+            render();
+            window.scrollTo(0, 0);
+        }
+
+        function handleCheckoutSubmit(e) {
+            e.preventDefault();
+            state.orderPlaced = true;
+            render();
+            
+            setTimeout(() => {
+                state.cart = [];
+                state.currentPage = 'home';
+                state.orderPlaced = false;
+                render();
+                window.scrollTo(0, 0);
+            }, 3000);
+        }
+
+        function renderStars(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 !== 0;
+            let stars = '';
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i data-lucide="star" class="w-4 h-4 fill-current text-yellow-500"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i data-lucide="star-half" class="w-4 h-4 fill-current text-yellow-500"></i>';
+            }
+            
+            return stars;
+        }
+
+        // Page Renderers
+        function renderHomePage() {
+            return `
+                <!-- Navigation -->
+                <nav class="fixed top-0 left-0 right-0 z-40 glassmorphism">
+                    <div class="max-w-7xl mx-auto px-6 py-6">
+                        <div class="flex items-center justify-between">
+                            <div class="text-2xl font-serif tracking-wider">AURA</div>
+                            
+                            <div class="hidden md:flex items-center gap-8 text-sm tracking-wider">
+                                <a href="#" class="hover:text-white/60 transition-colors">SHOP</a>
+                                <a href="#" class="hover:text-white/60 transition-colors">ABOUT</a>
+                                <a href="#" class="hover:text-white/60 transition-colors">SCIENCE</a>
+                                <a href="#" class="hover:text-white/60 transition-colors">CONTACT</a>
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <!-- Admin Button -->
+                                <a 
+                                    href="https://brand-aura-magic.lovable.app/" 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-yellow-600/20 to-yellow-500/20 border border-yellow-600/30 hover:border-yellow-500/50 transition-all duration-300 group"
+                                >
+                                    <i data-lucide="shield-check" class="w-4 h-4 text-yellow-500 group-hover:text-yellow-400 transition-colors"></i>
+                                    <span class="text-sm font-medium text-yellow-500 group-hover:text-yellow-400 transition-colors tracking-wider">ADMIN</span>
+                                </a>
+                                
+                                <!-- Mobile Admin Icon -->
+                                <a 
+                                    href="https://brand-aura-magic.lovable.app/" 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="md:hidden w-10 h-10 rounded-full bg-gradient-to-r from-yellow-600/20 to-yellow-500/20 border border-yellow-600/30 flex items-center justify-center hover:border-yellow-500/50 transition-all duration-300"
+                                >
+                                    <i data-lucide="shield-check" class="w-5 h-5 text-yellow-500"></i>
+                                </a>
+                                
+                                <button class="relative hover:text-white/60 transition-colors" onclick="state.isCartOpen = true; render();">
+                                    <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                                    ${getCartCount() > 0 ? `
+                                        <span class="absolute -top-2 -right-2 w-5 h-5 bg-white text-black text-xs rounded-full flex items-center justify-center font-medium">
+                                            ${getCartCount()}
+                                        </span>
+                                    ` : ''}
+                                </button>
+                                <button class="md:hidden" onclick="alert('Mobile menu')">
+                                    <i data-lucide="menu" class="w-6 h-6"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- LUXURY HERO SECTION -->
+                <section class="luxury-hero-section">
+                    <!-- Ken Burns Background -->
+                    <div class="background-layer"></div>
+
+                    <!-- Mystical Particles -->
+                    <div class="particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                    </div>
+
+                    <div class="luxury-content-wrapper">
+                        <div class="luxury-hero-content">
+                            <!-- Left Content -->
+                            <div class="luxury-text-content">
+                                <div class="luxury-brand-logo">AURA</div>
+                                <h1 class="luxury-hero-title">
+                                    Unveil Your<br>
+                                    <span class="highlight">Radiance</span>
+                                </h1>
+                                <p class="luxury-hero-description">
+                                    Experience the transformative power of our Radiance Night Cream. 
+                                    Infused with 24K gold essence and rare botanical extracts, 
+                                    this luxurious formula works overnight to restore, rejuvenate, 
+                                    and reveal your skin's natural luminosity.
+                                </p>
+                                <a href="#products" class="luxury-cta-button">
+                                    <span>Discover More</span>
+                                </a>
+                            </div>
+
+                            <!-- Product Showcase -->
+                            <div class="product-showcase">
+                                <!-- Golden Aura -->
+                                <div class="aura-glow"></div>
+                                
+                                <!-- Floating Silk -->
+                                <div class="silk-fabric"></div>
+                                
+                                <!-- Product Container -->
+                                <div class="product-container">
+                                    <svg class="product-image" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+                                        <!-- Marble Surface Reflection -->
+                                        <defs>
+                                            <linearGradient id="marbleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#1a1410;stop-opacity:0.5" />
+                                                <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:0" />
+                                            </linearGradient>
+                                            
+                                            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                                                <stop offset="50%" style="stop-color:#DAA520;stop-opacity:1" />
+                                                <stop offset="100%" style="stop-color:#B8860B;stop-opacity:1" />
+                                            </linearGradient>
+                                            
+                                            <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+                                                <stop offset="50%" style="stop-color:#0a0a0a;stop-opacity:1" />
+                                                <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+                                            </linearGradient>
+                                            
+                                            <radialGradient id="highlight" cx="30%" cy="30%">
+                                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.4" />
+                                                <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+                                            </radialGradient>
+                                        </defs>
+                                        
+                                        <!-- Marble Base Shadow -->
+                                        <ellipse cx="200" cy="460" rx="120" ry="15" fill="url(#marbleGrad)" opacity="0.6"/>
+                                        
+                                        <!-- Glass Jar Body -->
+                                        <rect x="120" y="180" width="160" height="200" rx="15" fill="url(#glassGrad)"/>
+                                        <rect x="125" y="185" width="150" height="190" rx="12" fill="#000000" opacity="0.8"/>
+                                        
+                                        <!-- Glass Reflection -->
+                                        <ellipse cx="160" cy="220" rx="30" ry="50" fill="url(#highlight)"/>
+                                        
+                                        <!-- Gold Band (Top) -->
+                                        <rect x="115" y="165" width="170" height="20" fill="url(#goldGrad)"/>
+                                        <rect x="118" y="168" width="164" height="14" fill="#FFD700" opacity="0.5"/>
+                                        
+                                        <!-- Gold Band (Bottom) -->
+                                        <rect x="115" y="375" width="170" height="15" fill="url(#goldGrad)"/>
+                                        
+                                        <!-- Gold Cap/Lid -->
+                                        <ellipse cx="200" cy="165" rx="85" ry="25" fill="url(#goldGrad)"/>
+                                        <ellipse cx="200" cy="160" rx="85" ry="25" fill="#FFD700"/>
+                                        <ellipse cx="200" cy="155" rx="75" ry="20" fill="url(#goldGrad)"/>
+                                        <ellipse cx="200" cy="152" rx="70" ry="18" fill="#DAA520"/>
+                                        
+                                        <!-- Cap Highlight -->
+                                        <ellipse cx="180" cy="150" rx="30" ry="8" fill="#FFD700" opacity="0.6"/>
+                                        
+                                        <!-- AURA Logo on Jar -->
+                                        <text x="200" y="290" font-family="Cormorant Garamond, serif" font-size="32" font-weight="300" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="8">AURA</text>
+                                        
+                                        <!-- Product Name -->
+                                        <text x="200" y="320" font-family="Montserrat, sans-serif" font-size="10" font-weight="300" fill="#DAA520" text-anchor="middle" letter-spacing="3" opacity="0.8">RADIANCE</text>
+                                        <text x="200" y="335" font-family="Montserrat, sans-serif" font-size="10" font-weight="300" fill="#DAA520" text-anchor="middle" letter-spacing="3" opacity="0.8">NIGHT CREAM</text>
+                                        
+                                        <!-- Gold Accent Details -->
+                                        <circle cx="200" cy="360" r="3" fill="#FFD700" opacity="0.6"/>
+                                        <line x1="190" y1="360" x2="210" y2="360" stroke="#DAA520" stroke-width="0.5" opacity="0.4"/>
+                                    </svg>
+                                    
+                                    <!-- Reflection Effect -->
+                                    <div class="reflection"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Products Section -->
+                <section id="products" class="py-32 px-6 bg-[#0a0a0a]">
+                    <div class="max-w-7xl mx-auto">
+                        <div class="text-center mb-20 scroll-animate">
+                            <p class="text-sm tracking-widest mb-4 text-white/60">OUR COLLECTION</p>
+                            <h2 class="text-5xl md:text-6xl font-serif mb-6">Discover Luxury</h2>
+                            <p class="text-white/60 max-w-2xl mx-auto text-lg">
+                                Each product is meticulously crafted with the finest ingredients to deliver exceptional results
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            ${products.map((product, index) => `
+                                <div class="product-card scroll-animate glassmorphism rounded-2xl overflow-hidden cursor-pointer group" 
+                                     style="animation-delay: ${index * 0.1}s"
+                                     onclick="openProductModal(${product.id})">
+                                    <div class="relative overflow-hidden">
+                                        <img src="${product.image}" alt="${product.name}" 
+                                             class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500" />
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    </div>
+                                    <div class="p-8">
+                                        <div class="flex items-center gap-2 mb-3">
+                                            ${renderStars(product.rating)}
+                                        </div>
+                                        <p class="text-xs tracking-widest mb-2 text-white/60">${product.category.toUpperCase()}</p>
+                                        <h3 class="text-2xl font-serif mb-3">${product.name}</h3>
+                                        <p class="text-2xl font-light mb-4">$${product.price}</p>
+                                        <button 
+                                            class="w-full magnetic-button bg-white/10 hover:bg-white/20 px-6 py-3 text-sm uppercase tracking-wider transition-all rounded-lg backdrop-blur-sm"
+                                            onclick="event.stopPropagation(); addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})"
+                                        >
+                                            Add to Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Science Section -->
+                <section class="py-32 px-6 bg-gradient-to-b from-[#0a0a0a] to-[#1a1410]">
+                    <div class="max-w-7xl mx-auto">
+                        <div class="grid md:grid-cols-2 gap-16 items-center">
+                            <div class="scroll-animate">
+                                <p class="text-sm tracking-widest mb-4 text-white/60">THE SCIENCE</p>
+                                <h2 class="text-5xl md:text-6xl font-serif mb-6">Innovation Meets Nature</h2>
+                                <p class="text-white/70 mb-8 text-lg leading-relaxed">
+                                    Our research team combines cutting-edge biotechnology with rare botanical extracts to create formulas that deliver visible results. Each ingredient is carefully selected for its proven efficacy and luxury experience.
+                                </p>
+                                <div class="space-y-6">
+                                    <div class="flex gap-4 items-start">
+                                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                                            <i data-lucide="flask-conical" class="w-6 h-6"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-serif mb-2">Laboratory Tested</h3>
+                                            <p class="text-white/60">Clinically proven formulations backed by science</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-4 items-start">
+                                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                                            <i data-lucide="leaf" class="w-6 h-6"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-serif mb-2">Natural Ingredients</h3>
+                                            <p class="text-white/60">Ethically sourced botanicals from around the world</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-4 items-start">
+                                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                                            <i data-lucide="sparkles" class="w-6 h-6"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-serif mb-2">Luxury Experience</h3>
+                                            <p class="text-white/60">Designed to elevate your daily skincare ritual</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="scroll-animate">
+                                <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800" 
+                                     alt="Science" 
+                                     class="rounded-2xl w-full h-[600px] object-cover" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Testimonials -->
+                <section class="py-32 px-6 bg-[#0a0a0a]">
+                    <div class="max-w-7xl mx-auto">
+                        <div class="text-center mb-20 scroll-animate">
+                            <p class="text-sm tracking-widest mb-4 text-white/60">TESTIMONIALS</p>
+                            <h2 class="text-5xl md:text-6xl font-serif mb-6">What Our Clients Say</h2>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-8">
+                            ${[
+                                {
+                                    name: 'Sarah Mitchell',
+                                    role: 'Beauty Editor',
+                                    text: 'AURA has completely transformed my skincare routine. The Radiance Night Cream is pure luxury in a jar.',
+                                    rating: 5
+                                },
+                                {
+                                    name: 'Emma Thompson',
+                                    role: 'Dermatologist',
+                                    text: 'As a dermatologist, I am impressed by the quality of ingredients and the visible results my patients experience.',
+                                    rating: 5
+                                },
+                                {
+                                    name: 'Jessica Chen',
+                                    role: 'Lifestyle Blogger',
+                                    text: 'The Golden Serum gives me an instant glow that lasts all day. Worth every penny!',
+                                    rating: 5
+                                }
+                            ].map((testimonial, index) => `
+                                <div class="glassmorphism p-8 rounded-2xl scroll-animate" style="animation-delay: ${index * 0.1}s">
+                                    <div class="flex gap-1 mb-4">
+                                        ${renderStars(testimonial.rating)}
+                                    </div>
+                                    <p class="text-white/70 mb-6 leading-relaxed">"${testimonial.text}"</p>
+                                    <div>
+                                        <p class="font-serif text-lg">${testimonial.name}</p>
+                                        <p class="text-sm text-white/60">${testimonial.role}</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Newsletter -->
+                <section class="py-32 px-6 bg-gradient-to-b from-[#0a0a0a] to-[#1a1410]">
+                    <div class="max-w-4xl mx-auto text-center scroll-animate">
+                        <h2 class="text-5xl md:text-6xl font-serif mb-6">Join Our Community</h2>
+                        <p class="text-white/60 mb-12 text-lg">
+                            Subscribe to receive exclusive offers, skincare tips, and early access to new products
+                        </p>
+                        <form class="flex flex-col md:flex-row gap-4 max-w-2xl mx-auto">
+                            <input 
+                                type="email" 
+                                placeholder="Enter your email" 
+                                class="flex-1 px-6 py-4 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition-colors"
+                                required
+                            />
+                            <button 
+                                type="submit"
+                                class="magnetic-button bg-white text-black px-12 py-4 text-sm uppercase tracking-wider hover:bg-white/90 transition-all rounded-lg font-medium whitespace-nowrap"
+                            >
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Footer -->
+                <footer class="py-20 px-6 bg-[#0a0a0a] border-t border-white/10">
+                    <div class="max-w-7xl mx-auto">
+                        <div class="grid md:grid-cols-4 gap-12 mb-12">
+                            <div>
+                                <h3 class="text-2xl font-serif mb-6">AURA</h3>
+                                <p class="text-white/60 text-sm leading-relaxed">
+                                    Luxury skincare crafted with science and nature to unveil your natural radiance.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="text-sm uppercase tracking-wider mb-6">Shop</h4>
+                                <ul class="space-y-3 text-white/60 text-sm">
+                                    <li><a href="#" class="hover:text-white transition-colors">All Products</a></li>
+                                    <li><a href="#" class="hover:text-white transition-colors">Bestsellers</a></li>
+                                    <li><a href="#" class="hover:text-white transition-colors">New Arrivals</a></li>
+                                    <li><a href="#" class="hover:text-white transition-colors">Gift Sets</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-sm uppercase tracking-wider mb-6">About</h4>
+                                <ul class="space-y-3 text-white/60 text-sm">
+                                    <li><a href="#" class="hover:text-white transition-colors">Our Story</a></li>
+                                    <li><a href="#" class="hover:text-white transition-colors">Science</a></li>
+                                    <li><a href="#" class="hover:text-white transition-colors">Sustainability</a></li>
+                                    <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-sm uppercase tracking-wider mb-6">Support</h4>
+                                <ul class="space-y-3 text-white/60 text-sm">
+                                    <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                                    <li><a href="#" class="hover:text-white transition-colors">Shipping</a></li>
+                                    <li><a href="#" class="hover:text-white transition-colors">Returns</a></li>
+                                    <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+                            <p class="text-white/60 text-sm">© 2024 AURA. All rights reserved.</p>
+                            <div class="flex gap-6">
+                                <a href="#" class="hover:text-white/60 transition-colors">
+                                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="hover:text-white/60 transition-colors">
+                                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="hover:text-white/60 transition-colors">
+                                    <i data-lucide="twitter" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            `;
+        }
+
+        function renderCheckoutPage() {
+            if (state.orderPlaced) {
+                return `
+                    <div class="min-h-screen flex items-center justify-center p-6">
+                        <div class="text-center">
+                            <div class="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-6 success-icon">
+                                <i data-lucide="check" class="w-10 h-10 text-green-500"></i>
+                            </div>
+                            <h1 class="text-4xl font-serif mb-4">Order Confirmed!</h1>
+                            <p class="text-white/60 mb-8">Thank you for your purchase. A confirmation email has been sent.</p>
+                            <p class="text-sm text-white/40">Redirecting to home page...</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            return `
+                <div class="min-h-screen py-20 px-6">
+                    <div class="max-w-6xl mx-auto">
+                        <button 
+                            onclick="state.currentPage = 'home'; render(); window.scrollTo(0, 0);"
+                            class="flex items-center gap-2 mb-12 hover:text-white/60 transition-colors"
+                        >
+                            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                            <span>Back to Shopping</span>
+                        </button>
+
+                        <h1 class="text-5xl font-serif mb-12">Checkout</h1>
+
+                        <div class="grid lg:grid-cols-3 gap-12">
+                            <!-- Checkout Form -->
+                            <div class="lg:col-span-2">
+                                <form id="checkoutForm" class="space-y-8">
+                                    <!-- Contact Information -->
+                                    <div class="glassmorphism p-8 rounded-2xl">
+                                        <h2 class="text-2xl font-serif mb-6">Contact Information</h2>
+                                        <div class="space-y-4">
+                                            <input 
+                                                type="email" 
+                                                name="email"
+                                                placeholder="Email" 
+                                                class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition-colors"
+                                                required
+                                            />
+                                            <input 
+                                                type="tel" 
+                                                name="phone"
+                                                placeholder="Phone Number" 
+                                                class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition-colors"
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <!-- Shipping Address -->
+                                    <div class="glassmorphism p-8 rounded-2xl">
+                                        <h2 class="text-2xl font-serif mb-6">Shipping Address</h2>
+                                        <div class="space-y-4">
+                                            <div class="grid md:grid-cols-2 gap-4">
+                                                <input 
+                                                    type="text" 
+                                                    name="firstName"
+                                                    placeholder="First Name" 
+                                                    class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition-colors"
+                                                    required
+                                                />
+                                                <input 
+                                                    type="text" 
+                                                    name="lastName"
+                                                    placeholder="Last Name" 
+                                                    class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition-colors"
+                                                    required
+                                                />
+                                            </div>
+                                            <input 
+                                                type="text" 
+                                                name="address"
+                                                placeholder="Street Address" 
+                                                class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition-colors"
+                                                required
+                                            />
+                                            <div class="grid md:grid-cols-3 gap-4">
+                                                <input 
+                                                    type="text" 
+                                                    name="city"
+                                                    placeholder="City" 
+                                                    class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition-colors"
+                                                    required
+                                                />
+                                                <input 
+                                                    type="text" 
+                                                    name="state"
+                                                    placeholder="State" 
+                                                    class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition-colors"
+                                                    required
+                                                />
+                                                <input 
+                                                    type="text" 
+                                                    name="zip"
+                                                    placeholder="ZIP Code" 
+                                                    class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition-colors"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Payment -->
+                                    <div class="glassmorphism p-8 rounded-2xl">
+                                        <h2 class="text-2xl font-serif mb-6">Payment Information</h2>
+                                        <div class="space-y-4">
+                                            <input 
+                                                type="text" 
+                                                name="cardNumber"
+                                                placeholder="Card Number" 
+                                                class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition-colors"
+                                                required
+                                            />
+                                            <div class="grid grid-cols-2 gap-4">
+                                                <input 
+                                                    type="text" 
+                                                    name="expiry"
+                                                    placeholder="MM/YY" 
+                                                    class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition-colors"
+                                                    required
+                                                />
+                                                <input 
+                                                    type="text" 
+                                                    name="cvv"
+                                                    placeholder="CVV" 
+                                                    class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition-colors"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button 
+                                        type="submit"
+                                        class="w-full magnetic-button bg-white text-black px-8 py-4 text-sm uppercase tracking-wider hover:bg-white/90 transition-all rounded-lg font-medium"
+                                    >
+                                        Complete Order
+                                    </button>
+                                </form>
+                            </div>
+
+                            <!-- Order Summary -->
+                            <div class="lg:col-span-1">
+                                <div class="glassmorphism p-8 rounded-2xl sticky top-24">
+                                    <h2 class="text-2xl font-serif mb-6">Order Summary</h2>
+                                    
+                                    <div class="space-y-4 mb-6 max-h-64 overflow-y-auto">
+                                        ${state.cart.map(item => `
+                                            <div class="flex gap-4 pb-4 border-b border-white/10">
+                                                <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg" />
+                                                <div class="flex-1">
+                                                    <p class="font-light mb-1">${item.name}</p>
+                                                    <p class="text-sm text-white/60">Qty: ${item.quantity}</p>
+                                                </div>
+                                                <p class="text-white/80">$${(item.price * item.quantity).toFixed(2)}</p>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+
+                                    <div class="space-y-3 py-4 border-t border-white/20">
+                                        <div class="flex justify-between text-white/70">
+                                            <span>Subtotal</span>
+                                            <span>$${getCartTotal()}</span>
+                                        </div>
+                                        <div class="flex justify-between text-white/70">
+                                            <span>Shipping</span>
+                                            <span>Free</span>
+                                        </div>
+                                        <div class="flex justify-between text-white/70">
+                                            <span>Tax</span>
+                                            <span>$0.00</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex justify-between text-2xl font-light pt-4 border-t border-white/20">
+                                        <span>Total</span>
+                                        <span>$${getCartTotal()}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Main Render Function
+        function render() {
+            const app = document.getElementById('app');
+            
+            app.innerHTML = `
+                ${state.currentPage === 'home' ? renderHomePage() : ''}
+                ${state.currentPage === 'checkout' ? renderCheckoutPage() : ''}
+
+                <!-- Product Modal -->
+                ${state.selectedProduct ? `
+                    <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 blur-in" onclick="if(event.target === this) { state.selectedProduct = null; render(); }">
+                        <div class="glassmorphism rounded-2xl max-w-4xl w-full overflow-hidden max-h-[90vh] overflow-y-auto">
+                            ${(() => {
+                                const product = products.find(p => p.id === state.selectedProduct);
+                                return `
+                                    <div class="grid md:grid-cols-2">
+                                        <img src="${product.image}" alt="${product.name}" class="w-full h-64 md:h-full object-cover" />
+                                        <div class="p-8 md:p-12">
+                                            <button 
+                                                class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/20 flex items-center justify-center hover:bg-black/40 transition-colors"
+                                                onclick="state.selectedProduct = null; render();"
+                                            >
+                                                <i data-lucide="x" class="w-5 h-5"></i>
+                                            </button>
+                                            
+                                            <div class="flex gap-1 mb-4">
+                                                ${renderStars(product.rating)}
+                                            </div>
+                                            
+                                            <h2 class="text-3xl md:text-4xl font-serif mb-4">${product.name}</h2>
+                                            <p class="text-3xl font-light mb-6">$${product.price}</p>
+                                            <p class="text-white/70 mb-8 leading-relaxed">${product.description}</p>
+                                            
+                                            <div class="mb-8">
+                                                <h3 class="text-sm uppercase tracking-wider mb-4 text-white/80">Key Benefits</h3>
+                                                <ul class="space-y-2">
+                                                    ${product.benefits.map(benefit => `
+                                                        <li class="flex items-center gap-3 text-white/70">
+                                                            <i data-lucide="check" class="w-5 h-5 text-white"></i>
+                                                            <span>${benefit}</span>
+                                                        </li>
+                                                    `).join('')}
+                                                </ul>
+                                            </div>
+                                            
+                                            <button 
+                                                class="w-full magnetic-button bg-white text-black px-8 py-4 text-sm uppercase tracking-wider hover:bg-white/90 transition-all rounded-lg font-medium"
+                                                onclick="addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})"
+                                            >
+                                                Add to Cart
+                                            </button>
+                                        </div>
+                                    </div>
+                                `;
+                            })()}
+                        </div>
+                    </div>
+                ` : ''}
+
+                <!-- Cart Sidebar -->
+                ${state.isCartOpen ? `
+                    <div class="fixed inset-0 z-50 flex blur-in" onclick="if(event.target === this) { state.isCartOpen = false; render(); }">
+                        <div class="flex-1 bg-black/60" onclick="state.isCartOpen = false; render();"></div>
+                        <div class="cart-slide w-full md:max-w-md bg-[#1a1a1a] h-full overflow-y-auto">
+                            <div class="p-6 md:p-8">
+                                <div class="flex items-center justify-between mb-8">
+                                    <h2 class="text-2xl font-serif">Shopping Cart</h2>
+                                    <button 
+                                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"
+                                        onclick="state.isCartOpen = false; render();"
+                                    >
+                                        <i data-lucide="x" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+
+                                ${state.cart.length === 0 ? `
+                                    <div class="text-center py-20">
+                                        <i data-lucide="shopping-bag" class="w-16 h-16 mx-auto mb-4 opacity-20"></i>
+                                        <p class="text-white/60">Your cart is empty</p>
+                                    </div>
+                                ` : `
+                                    <div class="space-y-6 mb-8">
+                                        ${state.cart.map(item => `
+                                            <div class="flex gap-4 pb-6 border-b border-white/10">
+                                                <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded-lg" />
+                                                <div class="flex-1">
+                                                    <h3 class="font-light mb-2">${item.name}</h3>
+                                                    <p class="text-white/60 mb-3">$${item.price}</p>
+                                                    <div class="flex items-center gap-3">
+                                                        <button 
+                                                            class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"
+                                                            onclick="updateQuantity(${item.id}, -1)"
+                                                        >
+                                                            <i data-lucide="minus" class="w-4 h-4"></i>
+                                                        </button>
+                                                        <span class="w-8 text-center">${item.quantity}</span>
+                                                        <button 
+                                                            class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"
+                                                            onclick="updateQuantity(${item.id}, 1)"
+                                                        >
+                                                            <i data-lucide="plus" class="w-4 h-4"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <button 
+                                                    class="self-start hover:text-red-400 transition-colors"
+                                                    onclick="removeFromCart(${item.id})"
+                                                >
+                                                    <i data-lucide="trash-2" class="w-5 h-5"></i>
+                                                </button>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+
+                                    <div class="space-y-4 mb-8">
+                                        <div class="flex justify-between text-lg">
+                                            <span class="text-white/70">Subtotal</span>
+                                            <span>$${getCartTotal()}</span>
+                                        </div>
+                                        <div class="flex justify-between text-white/70">
+                                            <span>Shipping</span>
+                                            <span>Free</span>
+                                        </div>
+                                        <div class="flex justify-between text-2xl font-light pt-4 border-t border-white/20">
+                                            <span>Total</span>
+                                            <span>$${getCartTotal()}</span>
+                                        </div>
+                                    </div>
+
+                                    <button 
+                                        class="w-full magnetic-button bg-white text-black px-8 py-4 text-sm uppercase tracking-wider hover:bg-white/90 transition-all rounded-lg font-medium"
+                                        onclick="handleCheckout()"
+                                    >
+                                        Proceed to Checkout
+                                    </button>
+                                `}
+                            </div>
+                        </div>
+                    </div>
+                ` : ''}
+            `;
+
+            // Initialize Lucide Icons
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+
+            // Attach form handler
+            const form = document.getElementById('checkoutForm');
+            if (form) {
+                form.addEventListener('submit', handleCheckoutSubmit);
+                
+                // Update state on input change
+                form.querySelectorAll('input, select').forEach(input => {
+                    input.addEventListener('input', (e) => {
+                        state.checkoutData[e.target.name] = e.target.value;
+                    });
+                });
+            }
+
+            // Scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.scroll-animate').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Initial render
+        render();
+    </script>
+</body>
+</html>
